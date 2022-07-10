@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Borrow extends Model
 {
+    public function book()
+    {
+        return $this->hasOne('App\Book');
+    }
+
     protected $guarded = array('id');
 
     public static $rules = array(

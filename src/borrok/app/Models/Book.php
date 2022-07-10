@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
+    public function borrow()
+    {
+        return $this->hasOne('App\Borrow');
+    }
+    
     public static $rules = array(
         'id' => 'required|digits:8',
         'title' => 'required|string|max:100',

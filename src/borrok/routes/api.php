@@ -23,3 +23,6 @@ Route::get('/hello', function () {
 });
 
 Route::get('/book', 'BookController@index');
+Route::get('/new/book', 'BookController@new');
+Route::get('/lend/book', 'BookController@lend');
+Route::get('/stock/book', 'BookController@stock');
