@@ -21,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/hello', function () {
     return 'Hello Next.js';
 });
+
+Route::get('/book', 'BookController@index');
