@@ -39,7 +39,7 @@ class BookController extends Controller
 
   public function lend()
   {
-    $items = Book::join('lending', 'books.id', '=', 'lending.book_id')->orderBy('return_date', 'asc')->get();
+    $items = Book::join('borrows', 'books.id', '=', 'borrows.book_id')->orderBy('return_date', 'asc')->get();
 
     foreach ($items as $item) {
       $item->return_date = date('Y/m/d', strtotime($item->return_date));
@@ -52,10 +52,17 @@ class BookController extends Controller
 
   public function stock()
   {
-    $items = Book::leftjoin('lending', 'books.id', '=', 'lending.book_id')->whereNull('lending.id')->orderBy('return_date', 'asc')->get();
+    $items = Book::leftjoin('borrows', 'books.id', '=', 'borrows.book_id')->whereNull('borrows.id')->orderBy('return_date', 'asc')->get();
 
     return response()->json([
       'STOCK_BOOK_DATA' => $items
     ], Response::HTTP_OK);
+  }
+
+  public function detail($id)
+  {
+    $item = Book::where('id', $id)->first();
+
+    return response()->json($item, Response::HTTP_OK);
   }
 }

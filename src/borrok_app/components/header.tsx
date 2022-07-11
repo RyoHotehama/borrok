@@ -14,7 +14,6 @@ const Header: NextPage = () => {
               </a>
             </Link>
           </div>
-          <div>
             <div className = "pt-2">
               <div className = "d-flex">
                 <div className = "pr-5">返却</div>
@@ -27,7 +26,6 @@ const Header: NextPage = () => {
                 <div>ログアウト</div>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
