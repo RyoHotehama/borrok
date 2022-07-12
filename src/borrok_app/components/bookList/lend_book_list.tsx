@@ -8,7 +8,7 @@ const Card: NextPage = (props) => {
   if (props.data) {
     const card = props.data.LEND_BOOK_DATA.map((value, key) => (
       <div className = "col-sm-4" key = {key}>
-        <Link href = {{ pathname: '/book/detail/[id]', query: { id: value.id }}} passHref>
+        <Link href = {{ pathname: '/book/detail/[id]', query: { id: value.book_id }}} passHref>
           <a>
             <div className = "card bg-light card-wrap" style = {{maxWidth: '25rem'}}>
               <Image src = "/image/logo.png" className = "card-img-top border-bottom" width = {200} height = {200}/>

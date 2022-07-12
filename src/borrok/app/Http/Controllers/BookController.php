@@ -32,17 +32,30 @@ class BookController extends Controller
     // 新着データを取得
     $items = Book::whereRaw('created_at > ? and created_at <= ?', [$lastmonth, $today])->orderBy('created_at', 'desc')->get();
 
+    if ($items->isEmpty()) {
+      return;
+    }
+
     return response()->json([
       'NEW_BOOK_DATA' => $items
     ], Response::HTTP_OK);
   }
 
+  /**
+   * 貸出中取得
+   * @return json
+   */
   public function lend()
   {
     $items = Book::join('borrows', 'books.id', '=', 'borrows.book_id')->orderBy('return_date', 'asc')->get();
 
+    // 日付の変換
     foreach ($items as $item) {
       $item->return_date = date('Y/m/d', strtotime($item->return_date));
+    }
+
+    if ($items->isEmpty()) {
+      return;
     }
 
     return response()->json([
@@ -50,19 +63,40 @@ class BookController extends Controller
     ], Response::HTTP_OK);
   }
 
+  /**
+   * 在庫取得
+   * @return json
+   */
   public function stock()
   {
     $items = Book::leftjoin('borrows', 'books.id', '=', 'borrows.book_id')->whereNull('borrows.id')->orderBy('return_date', 'asc')->get();
+
+    if ($items->isEmpty()) {
+      return;
+    }
 
     return response()->json([
       'STOCK_BOOK_DATA' => $items
     ], Response::HTTP_OK);
   }
 
+  /**
+   * 詳細ページ取得
+   * @return json
+   */
   public function detail($id)
   {
     $item = Book::where('id', $id)->first();
 
     return response()->json($item, Response::HTTP_OK);
+  }
+
+  public function ranking()
+  {
+    $items = Book::orderby('lend_count', 'desc')->limit(5)->get();
+
+    return response()->json([
+      'RANKING_BOOK_DATA' => $items
+    ], Response::HTTP_OK);
   }
 }

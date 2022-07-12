@@ -32,11 +32,12 @@ const Card: NextPage = (props) => {
 
 
 const NewBook: NextPage = (props) => {
-  const { data, error } = useSWR('/api/new/book', () =>
+  const { data } = useSWR('/api/new/book', () =>
     axios
         .get('/api/new/book')
         .then((res: any) => res.data)
     )
+
   if (data) {
     return (
       <div className = "container">

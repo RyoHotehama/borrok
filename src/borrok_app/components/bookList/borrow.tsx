@@ -39,6 +39,7 @@ const Borrow: NextPage = (props) => {
         })
         .then((res: any) => res.data)
     )
+
   if (data) {
     return (
       <div className = "container">

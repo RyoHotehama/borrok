@@ -37,6 +37,21 @@ const POST: NextPage = () => {
       });
     }
   
+  if (!data) {
+    return (
+      <Layout title = "-borrok-">
+        <div className = "d-flex align-items-center justify-content-center" style = {{height: 500}}>
+          <div className = "text-center">
+            <div className = "spinner-border text-primary" role = "status"></div>
+            <div>
+            <h2 className = "mt-2">Loading...</h2>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    )
+  }
+
   if (data) {
     return (
       <Layout title = "-borrok-">

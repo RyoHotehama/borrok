@@ -22,12 +22,17 @@ Route::get('/hello', function () {
     return 'Hello Next.js';
 });
 
-Route::get('/book', 'BookController@index');
+// 新冊API
 Route::get('/new/book', 'BookController@new');
+
+Route::get('/book', 'BookController@index');
 Route::get('/lend/book', 'BookController@lend');
+
+// 貸出可能確認API
 Route::get('/stock/book', 'BookController@stock');
 Route::get('/book/{id}', 'BookController@detail')->where('id', '\d{8}');
 Route::post('/book/borrow', 'BorrowController@borrow');
 Route::get('/admin/book', 'AdminController@lend');
 Route::post('/history/book', 'BorrowController@history');
-
+Route::post('/user', 'UserController@name');
+Route::get('/book/ranking', 'BookController@ranking');
