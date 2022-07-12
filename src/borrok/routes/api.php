@@ -28,4 +28,5 @@ Route::get('/lend/book', 'BookController@lend');
 Route::get('/stock/book', 'BookController@stock');
 Route::get('/book/{id}', 'BookController@detail')->where('id', '\d{8}');
 Route::post('/book/borrow', 'BorrowController@borrow');
-Route::get('/book/borrow', 'BorrowController@borrow');
+Route::get('/admin/book/', 'AdminController@lend');
+

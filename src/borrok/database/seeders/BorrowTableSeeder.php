@@ -20,7 +20,7 @@ class BorrowTableSeeder extends Seeder
             'borrow_date' => '2022-07-10',
             'return_date' => '2022-07-16',
         ];
-        DB::table('lending')->insert($param);
+        DB::table('borrows')->insert($param);
 
         $param = [
             'user_id' => 1,
@@ -28,6 +28,6 @@ class BorrowTableSeeder extends Seeder
             'borrow_date' => '2022-07-10',
             'return_date' => '2022-07-17',
         ];
-        DB::table('lending')->insert($param);
+        DB::table('borrows')->insert($param);
     }
 }

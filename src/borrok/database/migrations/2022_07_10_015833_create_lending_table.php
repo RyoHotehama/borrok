@@ -13,10 +13,10 @@ class CreateLendingTable extends Migration
      */
     public function up()
     {
-        Schema::create('lending', function (Blueprint $table) {
+        Schema::create('borrows', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->integer('book_id');
+            $table->integer('book_id')->unique();
             $table->date('borrow_date');
             $table->date('return_date');
             $table->timestamps();
