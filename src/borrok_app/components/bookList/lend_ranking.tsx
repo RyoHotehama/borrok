@@ -7,33 +7,32 @@ import Link from 'next/link'
 const Card: NextPage = (props) => {
   if (props.data) {
     const card = props.data.RANKING_BOOK_DATA.map((value, key) => (
-      <div className = "col-sm-4" key = {key}>
+      <div className = "col-so-4 card-wrap h3" key = {key}>
         <Link href = {{ pathname: '/book/detail/[id]', query: { id: value.id }}} passHref>
-          <a>
-            <div className = "card bg-light card-wrap h3" style = {{maxWidth: '25rem'}}>
-              <Image src = "/image/logo.png" className = "card-img-top border-bottom" width = {200} height = {200}/>
-              {key + 1 == 1 &&
-                <span className = "position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white pl-2 pr-2 pt-1">{key + 1}</span>
-              }
-              {key + 1 == 2 &&
-                <span className = "position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-white pl-2 pr-2 pt-1">{key + 1}</span>
-              }
-              {key + 1 == 3 &&
-                <span className = "position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success text-white pl-2 pr-2 pt-1">{key + 1}</span>
-              }
-              {key + 1 == 4 &&
-                <span className = "position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark text-white pl-2 pr-2 pt-1">{key + 1}</span>
-              }
-              {key + 1 == 5 &&
-                <span className = "position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark text-white pl-2 pr-2 pt-1">{key + 1}</span>
-              }
-              <div className = "card-body bg-white">
-                <h4 className = "card-title text-nowrap">{value.title}</h4>
-                <mark className = "card-text h6">{value.book_tag}</mark>
-              </div>
-            </div>
-          </a>
+          <a className = "stretched-link"></a>
         </Link>
+        <div className = "card bg-light" style = {{maxWidth: '25rem'}}>
+          <Image src = "/image/logo.png" className = "card-img-top border-bottom" width = {200} height = {200}/>
+          {key + 1 == 1 &&
+            <span className = "position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white pl-2 pr-2 pt-1">{key + 1}</span>
+          }
+          {key + 1 == 2 &&
+            <span className = "position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-white pl-2 pr-2 pt-1">{key + 1}</span>
+          }
+          {key + 1 == 3 &&
+            <span className = "position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success text-white pl-2 pr-2 pt-1">{key + 1}</span>
+          }
+          {key + 1 == 4 &&
+            <span className = "position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark text-white pl-2 pr-2 pt-1">{key + 1}</span>
+          }
+          {key + 1 == 5 &&
+            <span className = "position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark text-white pl-2 pr-2 pt-1">{key + 1}</span>
+          }
+          <div className = "card-body bg-white">
+            <h4 className = "card-title text-nowrap">{value.title}</h4>
+            <mark className = "card-text h6">{value.book_tag}</mark>
+          </div>
+        </div>
       </div>
     ))
 

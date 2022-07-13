@@ -99,4 +99,13 @@ class BookController extends Controller
       'RANKING_BOOK_DATA' => $items
     ], Response::HTTP_OK);
   }
+
+  public function word(Request $request)
+  {
+    $items = Book::where('title', 'like', '%' . $request->word . '%')->get();
+
+    return response()->json([
+      'BOOK_DATA' => $items
+    ], Response::HTTP_OK);
+  }
 }

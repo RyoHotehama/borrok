@@ -6,3 +6,12 @@
   caption-side: top;
   color: black;
 }
+
+.col-so-4 {
+  position: relative;
+  width: 100%;
+  margin-right: 15px;
+  margin-left: 15px;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+}

@@ -36,3 +36,5 @@ Route::get('/admin/book', 'AdminController@lend');
 Route::post('/history/book', 'BorrowController@history');
 Route::post('/user', 'UserController@name');
 Route::get('/book/ranking', 'BookController@ranking');
+Route::post('/word', 'BookController@word');
+Route::get('/word', 'BookController@word');

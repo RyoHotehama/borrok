@@ -8,18 +8,17 @@ const Card: NextPage = (props) => {
 
   if (props.data) {
     const card = props.data.STOCK_BOOK_DATA.map((value, key) => (
-      <div className = "col-sm-4" key = {key}>
+      <div className = "col-so-4 card-wrap" key = {key}>
         <Link href = {{ pathname: '/book/detail/[id]', query: { id: value.id }}} passHref>
-          <a>
-            <div className = "card bg-light card-wrap" style = {{maxWidth: '25rem'}}>
-              <Image src = "/image/logo.png" className = "card-img-top border-bottom" width = {200} height = {200}/>
-              <div className = "card-body bg-white">
-                <h4 className = "card-title text-nowrap">{value.title}</h4>
-                <mark>{value.book_tag}</mark>
-              </div>
-            </div>
-          </a>
+          <a className = "stretched-link"></a>
         </Link>
+        <div className = "card bg-light" style = {{maxWidth: '25rem'}}>
+          <Image src = "/image/logo.png" className = "card-img-top border-bottom" width = {200} height = {200}/>
+          <div className = "card-body bg-white">
+            <h4 className = "card-title text-nowrap">{value.title}</h4>
+            <mark>{value.book_tag}</mark>
+          </div>
+        </div>
       </div>
     ))
 

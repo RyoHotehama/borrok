@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import useSWR from 'swr'
 import axios from '../libs/axios'
+import { useRouter } from "next/router"
 import Layout from '../components/layout'
 import NewBook from '../components/bookList/new_book_list'
 import LendBook from '../components/bookList/lend_book_list'
@@ -9,13 +10,20 @@ import Borrow from '../components/bookList/borrow'
 import Ranking from '../components/bookList/lend_ranking'
 
 const Top: NextPage = () => {
-  const { data } = useSWR('/api/user', () =>
+  const router = useRouter();
+  const { data, error } = useSWR('/api/user', () =>
     axios
         .post('/api/user', {
           id: 1,
         })
         .then((res: any) => res.data)
     )
+
+    if (error) {
+      router.push({
+        pathname: "/503",
+      });
+    }
 
     if (!data) {
       return (
