@@ -1,20 +1,22 @@
 import type { NextPage } from 'next'
 import useSWR from 'swr'
 import axios from '../libs/axios'
- 
+
 const Hello: NextPage = () => {
-    const { data, error } = useSWR('/api/hello', () =>
+    const { data, error } = useSWR('/api/book', () =>
     axios
-        .get('/api/hello')
+        .get('/api/book')
         .then((res: any) => res.data)
     )
-     
-    if (error) return <div>エラーが発生しました</div>
+     console.log(error);
+    if (error) return <div>{error.response.status}エラーが発生しました</div>
     if (!data) return <div>読み込み中</div>
     return (
     <div>
         <h1>ようこそ</h1>
-        <p>{data}</p>
+        {data.BOOK_DATA.map((value, key) =>(
+            <p key={key}>{value.id}</p>
+        ))}
     </div>
     )
 }
